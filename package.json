@@ -4,7 +4,7 @@
   "description": "Question of the Day",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "reminder": "esmo ./scripts/daily.ts"
   },
   "repository": {
     "type": "git",
