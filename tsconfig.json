@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "dist",
+    "sourceMap": false,
+    "target": "ES2016",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "allowJs": false,
+    "strict": true,
+    "noUnusedLocals": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "removeComments": true,
+    "jsx": "preserve",
+    "lib": ["esnext", "dom"],
+    "types": ["node"],
+    "rootDir": ".",
+    "declaration": true,
+  },
+  "include": ["algorithmers"],
+}
