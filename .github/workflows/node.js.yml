@@ -1,0 +1,40 @@
+name: Reminder
+on:
+  schedule:
+    - cron: '0 8 * * *'
+    - cron: '0 14 * * *'
+    - cron: '30 17 * * *'
+jobs:
+  first-reminder:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.15.1
+
+      - name: Use Node.js v16
+        uses: actions/setup-node@v2
+        with:
+          node-version: v16
+          registry-url: https://registry.npmjs.org/
+          cache: "pnpm"
+          
+      - name: Install Dependencies
+        run: pnpm install
+      
+      - name: First
+        if: github.event.schedule == '0 8 * * *'
+        run: pnpm run reminder first ${{ secrets.SERVER_SEND_KEY }}
+        
+      - name: Second
+        if: github.event.schedule == '0 14 * * *'
+        run: pnpm run reminder second ${{ secrets.SERVER_SEND_KEY }}
+        
+      - name: Third
+        if: github.event.schedule == '30 17 * * *'
+        run: pnpm run reminder third ${{ secrets.SERVER_SEND_KEY }}
