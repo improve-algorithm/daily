@@ -2,8 +2,7 @@ name: Reminder
 on:
   schedule:
     - cron: '0 8 * * *'
-    - cron: '0 14 * * *'
-    - cron: '30 17 * * *'
+    - cron: '0 17 * * *'
 jobs:
   first-reminder:
     runs-on: ubuntu-latest
@@ -31,10 +30,6 @@ jobs:
         if: github.event.schedule == '0 8 * * *'
         run: pnpm run reminder first ${{ secrets.SERVER_SEND_KEY }}
         
-      - name: Second
-        if: github.event.schedule == '0 14 * * *'
-        run: pnpm run reminder second ${{ secrets.SERVER_SEND_KEY }}
-        
-      - name: Third
+      - name: Last
         if: github.event.schedule == '30 17 * * *'
-        run: pnpm run reminder third ${{ secrets.SERVER_SEND_KEY }}
+        run: pnpm run reminder last ${{ secrets.SERVER_SEND_KEY }}
